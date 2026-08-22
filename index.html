@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>It's Not Big Dough — Neapolitan Pizza, Walthamstow</title>
+<meta name="description" content="London's warmest wood-fired Neapolitan pizza pop-up. Book us for your event, or find our stall in Walthamstow this week.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,700;1,9..144,900&family=Archivo:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --char: #1c140f;
+    --char-2: #241a13;
+    --cream: #f3e6c9;
+    --cream-2: #fbf3e0;
+    --tomato: #c33a1f;
+    --tomato-2: #9c2c17;
+    --basil: #47603a;
+    --ember: #e3a24a;
+    --line: rgba(243,230,201,0.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--char);
+    color:var(--cream-2);
+    font-family:'Archivo',sans-serif;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--tomato);color:var(--cream-2);}
+
+  h1,h2,h3,.display{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    line-height:1.02;
+    color:var(--cream-2);
+  }
+  .chalk{
+    font-family:'Caveat',cursive;
+    font-weight:700;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+
+  /* subtle char/flour texture */
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    pointer-events:none;
+    z-index:2000;
+    opacity:0.05;
+    background-image:radial-gradient(circle at 20% 30%, #fff 0.6px, transparent 0.6px),
+                      radial-gradient(circle at 70% 60%, #fff 0.5px, transparent 0.5px),
+                      radial-gradient(circle at 40% 80%, #fff 0.5px, transparent 0.5px);
+    background-size:140px 140px, 90px 90px, 160px 160px;
+    mix-blend-mode:overlay;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;top:0;z-index:1000;
+    background:rgba(28,20,15,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 28px;
+    max-width:1180px;margin:0 auto;
+  }
+  .brand{
+    display:flex;align-items:center;gap:10px;
+    font-family:'Fraunces',serif;font-style:italic;font-weight:700;
+    font-size:1.25rem;color:var(--cream-2);
+  }
+  .brand-mark{
+    width:34px;height:34px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, var(--ember), var(--tomato) 60%, var(--tomato-2));
+    box-shadow:0 0 16px rgba(227,162,74,0.55);
+    flex-shrink:0;
+  }
+  nav.links{display:flex;gap:34px;align-items:center;}
+  nav.links a{
+    font-size:0.86rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;
+    color:var(--cream);opacity:0.82;
+    position:relative;padding:4px 0;
+    transition:opacity .2s ease;
+  }
+  nav.links a:hover{opacity:1;}
+  nav.links a::after{
+    content:"";position:absolute;left:0;bottom:0;height:2px;width:0;
+    background:var(--ember);transition:width .25s ease;
+  }
+  nav.links a:hover::after{width:100%;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--tomato);color:var(--cream-2);
+    font-weight:700;font-size:0.88rem;letter-spacing:0.02em;
+    padding:12px 22px;border-radius:100px;
+    border:1px solid rgba(255,255,255,0.08);
+    box-shadow:0 6px 20px rgba(195,58,31,0.35);
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(195,58,31,0.48);background:var(--tomato-2);}
+  .btn-ghost{
+    background:transparent;border:1.5px solid rgba(243,230,201,0.4);color:var(--cream-2);
+    box-shadow:none;
+  }
+  .btn-ghost:hover{background:rgba(243,230,201,0.08);border-color:var(--cream-2);}
+  .nav-cta{display:none;}
+  @media(min-width:860px){.nav-cta{display:inline-flex;}}
+  .burger{display:none;background:none;border:none;color:var(--cream-2);font-size:1.6rem;cursor:pointer;}
+  @media(max-width:859px){
+    nav.links{display:none;}
+    .burger{display:block;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:92vh;
+    display:flex;align-items:flex-end;
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute;inset:0;
+    background-color:#2a1c12;
+    background-image:
+      radial-gradient(120% 90% at 15% 100%, rgba(227,162,74,0.35), transparent 60%),
+      url('https://images.unsplash.com/photo-1536622308015-0740925b8221?q=80&w=2400&auto=format&fit=crop');
+    background-size:cover, cover;
+    background-position:center, center;
+    background-repeat:no-repeat, no-repeat;
+    filter:saturate(1.05) contrast(1.05);
+  }
+  .hero-glow{
+    position:absolute;inset:0;
+    background:
+      radial-gradient(60% 55% at 18% 100%, rgba(227,162,74,0.55), transparent 70%),
+      linear-gradient(to top, rgba(20,14,10,0.97) 5%, rgba(20,14,10,0.55) 42%, rgba(20,14,10,0.25) 68%, rgba(20,14,10,0.55) 100%);
+    animation:ember-breathe 7s ease-in-out infinite;
+  }
+  @keyframes ember-breathe{
+    0%,100%{opacity:1;}
+    50%{opacity:0.82;}
+  }
+  @media(prefers-reduced-motion: reduce){
+    .hero-glow{animation:none;}
+  }
+  .hero-inner{
+    position:relative;z-index:2;
+    width:100%;
+    padding:0 28px 76px;
+    max-width:1180px;margin:0 auto;
+  }
+  .eyebrow{
+    font-family:'Caveat',cursive;font-weight:700;font-size:1.5rem;
+    color:var(--ember);
+    display:flex;align-items:center;gap:10px;
+    margin-bottom:10px;
+  }
+  .eyebrow::before{content:"🔥";font-size:1.1rem;filter:none;}
+  h1.hero-title{
+    font-size:clamp(2.6rem, 6.4vw, 5.6rem);
+    max-width:14ch;
+    text-shadow:0 6px 30px rgba(0,0,0,0.4);
+  }
+  h1.hero-title em{
+    color:var(--tomato);
+    font-style:italic;
+    text-shadow:0 0 30px rgba(195,58,31,0.5);
+  }
+  .hero-sub{
+    margin-top:20px;
+    font-size:1.08rem;
+    color:var(--cream);
+    max-width:46ch;
+    opacity:0.9;
+    line-height:1.55;
+  }
+  .hero-cta-row{
+    margin-top:34px;
+    display:flex;flex-wrap:wrap;gap:16px;align-items:center;
+  }
+  .hero-trust{
+    margin-top:36px;
+    display:flex;flex-wrap:wrap;gap:26px;
+    font-size:0.86rem;color:var(--cream);opacity:0.85;
+  }
+  .hero-trust span{display:flex;align-items:center;gap:7px;}
+  .stars{color:var(--ember);letter-spacing:1px;}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{position:relative;padding:100px 0;}
+  .eyebrow-label{
+    font-size:0.78rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;
+    color:var(--ember);margin-bottom:16px;display:block;
+  }
+  .section-head{max-width:640px;margin-bottom:56px;}
+  .section-head h2{font-size:clamp(2rem,4vw,2.9rem);}
+  .section-head p{margin-top:16px;font-size:1.05rem;color:var(--cream);opacity:0.82;line-height:1.6;}
+
+  /* ---------- STORY ---------- */
+  .story{background:var(--char-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .story-grid{
+    display:grid;grid-template-columns:1fr;gap:56px;align-items:center;
+  }
+  @media(min-width:900px){.story-grid{grid-template-columns:1.05fr 0.95fr;gap:70px;}}
+  .story-photo{
+    position:relative;
+    border-radius:14px;overflow:hidden;
+    aspect-ratio:4/5;
+  }
+  .story-photo img{width:100%;height:100%;object-fit:cover;}
+  .note{
+    position:absolute;bottom:-26px;right:-18px;
+    background:var(--cream-2);
+    color:var(--char);
+    padding:20px 22px;
+    max-width:250px;
+    border-radius:3px;
+    transform:rotate(-3deg);
+    box-shadow:0 18px 40px rgba(0,0,0,0.45);
+    font-family:'Caveat',cursive;font-weight:600;font-size:1.28rem;line-height:1.28;
+  }
+  @media(max-width:520px){.note{position:static;transform:rotate(-1.5deg);margin-top:18px;}}
+  .story-copy p{font-size:1.05rem;line-height:1.72;color:var(--cream);opacity:0.9;margin-bottom:18px;}
+  .story-copy strong{color:var(--cream-2);font-weight:700;}
+
+  /* ---------- MENU / CHALKBOARD ---------- */
+  .board{
+    background:
+      radial-gradient(circle at 15% 20%, rgba(255,255,255,0.03), transparent 40%),
+      radial-gradient(circle at 85% 75%, rgba(255,255,255,0.025), transparent 40%),
+      var(--char);
+    border:2px solid rgba(243,230,201,0.16);
+    border-radius:18px;
+    padding:48px 36px;
+  }
+  .menu-list{
+    list-style:none;
+    display:grid;grid-template-columns:1fr;gap:0;
+  }
+  .menu-list li{
+    display:flex;justify-content:space-between;align-items:baseline;gap:18px;
+    padding:20px 0;
+    border-bottom:1px dashed rgba(243,230,201,0.22);
+  }
+  .menu-list li:last-child{border-bottom:none;}
+  .menu-name{font-family:'Fraunces',serif;font-style:italic;font-weight:600;font-size:1.35rem;color:var(--cream-2);}
+  .menu-desc{display:block;font-family:'Archivo',sans-serif;font-style:normal;font-size:0.88rem;color:var(--cream);opacity:0.65;margin-top:4px;}
+  .menu-price{font-family:'Caveat',cursive;font-weight:700;font-size:1.5rem;color:var(--ember);white-space:nowrap;}
+  .menu-tag{
+    display:inline-block;font-size:0.62rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;
+    background:var(--basil);color:var(--cream-2);padding:3px 8px;border-radius:20px;margin-left:10px;vertical-align:middle;
+  }
+
+  /* ---------- SOCIAL PROOF ---------- */
+  .proof-strip{
+    display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;
+    padding:22px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    font-size:0.85rem;color:var(--cream);opacity:0.75;
+  }
+  .reviews-grid{
+    display:grid;grid-template-columns:1fr;gap:24px;
+  }
+  @media(min-width:800px){.reviews-grid{grid-template-columns:repeat(3,1fr);}}
+  .review-card{
+    background:var(--char-2);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:28px;
+  }
+  .review-stars{color:var(--ember);letter-spacing:2px;margin-bottom:14px;font-size:0.95rem;}
+  .review-card p{font-size:0.98rem;line-height:1.6;color:var(--cream);opacity:0.9;}
+  .review-who{margin-top:18px;font-size:0.82rem;font-weight:700;color:var(--cream-2);opacity:0.75;}
+
+  /* ---------- FIND US ---------- */
+  .find{
+    background:linear-gradient(180deg, var(--char) 0%, var(--char-2) 100%);
+  }
+  .find-grid{
+    display:grid;grid-template-columns:1fr;gap:20px;
+  }
+  @media(min-width:760px){.find-grid{grid-template-columns:repeat(3,1fr);}}
+  .find-card{
+    border:1px solid var(--line);border-radius:14px;padding:30px 26px;
+    background:rgba(243,230,201,0.02);
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .find-card:hover{border-color:rgba(227,162,74,0.5);transform:translateY(-3px);}
+  .find-card .day{font-family:'Caveat',cursive;font-weight:700;color:var(--ember);font-size:1.4rem;}
+  .find-card h3{font-size:1.3rem;margin-top:6px;}
+  .find-card p{margin-top:10px;font-size:0.92rem;color:var(--cream);opacity:0.75;line-height:1.55;}
+
+  /* ---------- EVENTS CTA ---------- */
+  .cta-band{
+    position:relative;
+    background:
+      radial-gradient(65% 100% at 50% 0%, rgba(195,58,31,0.35), transparent 60%),
+      var(--char-2);
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    text-align:center;
+  }
+  .cta-band h2{font-size:clamp(2rem,5vw,3.4rem);max-width:16ch;margin:0 auto;}
+  .cta-band p{margin:20px auto 0;max-width:52ch;color:var(--cream);opacity:0.85;font-size:1.05rem;line-height:1.6;}
+  .cta-band .hero-cta-row{justify-content:center;margin-top:34px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:64px 0 40px;border-top:1px solid var(--line);}
+  .footer-grid{
+    display:grid;grid-template-columns:1fr;gap:40px;
+  }
+  @media(min-width:760px){.footer-grid{grid-template-columns:1.3fr 1fr 1fr;}}
+  footer .brand{margin-bottom:14px;}
+  footer p{color:var(--cream);opacity:0.65;font-size:0.92rem;line-height:1.6;max-width:36ch;}
+  .footer-col h4{font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ember);margin-bottom:16px;}
+  .footer-col a{display:block;font-size:0.92rem;color:var(--cream);opacity:0.75;margin-bottom:10px;transition:opacity .2s;}
+  .footer-col a:hover{opacity:1;color:var(--ember);}
+  .footer-bottom{
+    margin-top:56px;padding-top:26px;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    font-size:0.8rem;color:var(--cream);opacity:0.5;
+  }
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="#top" class="brand"><span class="brand-mark"></span>It's Not Big Dough</a>
+    <nav class="links">
+      <a href="#story">Our Story</a>
+      <a href="#menu">Menu</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#find">Find Us</a>
+      <a href="#events">Private Events</a>
+    </nav>
+    <a href="https://www.itsnotbigdough.com/booking" class="btn nav-cta" target="_blank" rel="noopener">Book Now</a>
+    <button class="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<div id="top" class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <p class="eyebrow">Wood-fired, in Walthamstow</p>
+    <h1 class="hero-title">Neapolitan pizza,<br>made like <em>nonna</em> used to.</h1>
+    <p class="hero-sub">A London pop-up serving proper Naples-style pizza from a wood-fired oven — honest dough, good company, and a story behind every pie. Vegan bases available.</p>
+    <div class="hero-cta-row">
+      <a href="https://www.itsnotbigdough.com/booking" class="btn" target="_blank" rel="noopener">Book Us For Your Event →</a>
+      <a href="#find" class="btn btn-ghost">Find Us This Week</a>
+    </div>
+    <div class="hero-trust">
+      <span><span class="stars">★★★★★</span> 4.9 · 184 Google reviews</span>
+      <span>📍 Walthamstow, London E17</span>
+      <span>🍕 £10–20 per person</span>
+    </div>
+  </div>
+</div>
+
+<section class="story" id="story">
+  <div class="wrap story-grid">
+    <div class="story-photo reveal">
+      <img src="https://images.unsplash.com/photo-1597715469889-dd75fe4a1765?q=80&w=1200&auto=format&fit=crop" alt="It's Not Big Dough pizza fresh from the wood-fired oven" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1536622308015-0740925b8221?q=80&w=1200&auto=format&fit=crop';">
+      <div class="note">"It's not big to struggle on your own." That's where the name comes from.</div>
+    </div>
+    <div class="story-copy reveal">
+      <span class="eyebrow-label">The It's Not Big Dough Story</span>
+      <h2 style="margin-bottom:22px;">Pizza made with a bit of heart in it.</h2>
+      <p>We're a London-based Neapolitan pizza pop-up, making pies <strong>just like nonna used to</strong> — she's from Naples, and this whole thing started with her recipes and a wood-fired oven.</p>
+      <p>Around 1 in 4 people in the UK deal with mental health struggles, something we've felt ourselves. <strong>"It's Not Big Dough"</strong> is a reminder that it's not big to struggle on your own, either. Making pizza has always brought us joy through the harder moments — we hope a slice can do the same for you.</p>
+      <p>We run residencies and private events all year round, any size or shape welcomed. We're also working towards supporting mental health charities as we grow.</p>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow-label">From The Oven</span>
+      <h2>A few favourites off the board.</h2>
+      <p>The line-up changes with the seasons and whatever's good that week — here's a taste of what's been flying out lately.</p>
+    </div>
+    <div class="board reveal">
+      <ul class="menu-list">
+        <li>
+          <div>
+            <span class="menu-name">Hot Honey Guanciale</span>
+            <span class="menu-desc">San Marzano tomato, fior di latte, guanciale, crispy onions, hot honey, basil, parmesan</span>
+          </div>
+          <span class="menu-price">£14</span>
+        </li>
+        <li>
+          <div>
+            <span class="menu-name">Spring Greens<span class="menu-tag">Vegan Option</span></span>
+            <span class="menu-desc">Roast asparagus, fresh seasonal greens, lemon, San Marzano base</span>
+          </div>
+          <span class="menu-price">£13</span>
+        </li>
+        <li>
+          <div>
+            <span class="menu-name">The Nduja</span>
+            <span class="menu-desc">San Marzano tomato, fior di latte, 'nduja, chilli honey drizzle</span>
+          </div>
+          <span class="menu-price">£13</span>
+        </li>
+        <li>
+          <div>
+            <span class="menu-name">Classic Pepperoni</span>
+            <span class="menu-desc">San Marzano tomato, fior di latte, pepperoni, oregano</span>
+          </div>
+          <span class="menu-price">£12</span>
+        </li>
+      </ul>
+    </div>
+    <p style="text-align:center;margin-top:26px;opacity:0.6;font-size:0.88rem;">Full menu and today's specials shared on <a href="http://www.instagram.com/itsnotbigdough" target="_blank" rel="noopener" style="text-decoration:underline;">Instagram</a> before every stall.</p>
+  </div>
+</section>
+
+<div class="proof-strip">
+  <span class="stars">★★★★★</span>&nbsp; 4.9 out of 5 &nbsp;·&nbsp; 184 Google reviews &nbsp;·&nbsp; Reported as a favourite by 60+ regulars
+</div>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow-label">What People Say</span>
+      <h2>Worth queuing for.</h2>
+    </div>
+    <div class="reviews-grid reveal">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>Warns that the pizza is good enough to sell out or come with a wait — so grab a beer from the taproom next door and settle in.</p>
+        <div class="review-who">— Google review, 3 weeks ago</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>Calls it some of the best pizza they've had anywhere in London, praising a dough that's light, airy, and beautifully crisp at the edges.</p>
+        <div class="review-who">— Google review, 1 month ago</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>Says the humble-looking stall next to the beer company has absolutely no right to be this good — in the best way.</p>
+        <div class="review-who">— Google review, 3 weeks ago</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="find" id="find">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow-label">Find The Oven</span>
+      <h2>Catch us in Walthamstow.</h2>
+      <p>We run a regular residency at Uplands Business Park, E17, alongside our friends at Pretty Decent Beer Co — plus pop-ups around Blackhorse Beer Mile through the year.</p>
+    </div>
+    <div class="find-grid reveal">
+      <div class="find-card">
+        <span class="day">Home Base</span>
+        <h3>Uplands Business Park</h3>
+        <p>Unit 10, Uplands Business Park, London E17 5QJ — our regular residency, right by Pretty Decent Beer Co.</p>
+      </div>
+      <div class="find-card">
+        <span class="day">Opening Hours</span>
+        <h3>Open Today</h3>
+        <p>Doors open through the evening, kitchen closes at 10pm. Exact days confirmed weekly on Instagram — check before you head down.</p>
+      </div>
+      <div class="find-card">
+        <span class="day">On The Road</span>
+        <h3>Pop-Ups & Beer Mile</h3>
+        <p>We turn up at Blackhorse Beer Mile events and other spots around Walthamstow — follow along so you never miss us.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:44px;">
+      <a href="https://www.itsnotbigdough.com/where-to-find-us" class="btn" target="_blank" rel="noopener">See This Week's Location →</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="events">
+  <div class="wrap">
+    <span class="eyebrow-label">Private Events & Residencies</span>
+    <h2>Any size, any shape — we'll bring the oven.</h2>
+    <p>Weddings, birthdays, office parties, or a pop-up residency at your venue. Tell us the headcount and the vibe, and we'll sort the rest — dough included.</p>
+    <div class="hero-cta-row">
+      <a href="https://www.itsnotbigdough.com/booking" class="btn" target="_blank" rel="noopener">Enquire About Booking →</a>
+      <a href="mailto:nick@itsnotbigdough.com" class="btn btn-ghost">Email Us Directly</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="#top" class="brand"><span class="brand-mark"></span>It's Not Big Dough</a>
+        <p>Neapolitan wood-fired pizza, made with nonna's recipes and a reminder that it's not big to struggle on your own. Walthamstow, London E17.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="#story">Our Story</a>
+        <a href="#menu">Menu</a>
+        <a href="#find">Find Us</a>
+        <a href="https://www.itsnotbigdough.com/gallery" target="_blank" rel="noopener">Gallery</a>
+        <a href="https://www.itsnotbigdough.com/merch" target="_blank" rel="noopener">Merch</a>
+      </div>
+      <div class="footer-col">
+        <h4>Get In Touch</h4>
+        <a href="mailto:nick@itsnotbigdough.com">nick@itsnotbigdough.com</a>
+        <a href="http://www.instagram.com/itsnotbigdough" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/Its-Not-Big-Dough-100275159352404/" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.itsnotbigdough.com/booking" target="_blank" rel="noopener">Book Now</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 It's Not Big Dough. Walthamstow, London.</span>
+      <span>Made with wood smoke and a little bit of dough.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
